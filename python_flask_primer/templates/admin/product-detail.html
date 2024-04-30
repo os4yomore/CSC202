@@ -1,0 +1,50 @@
+{% extends "admin/base.html" %} {% block admin %}
+<!-- Using bulma to organize this admin area. See https://bulma.io/documentation/overview/ -->
+<!-- Let us create a CRUD admin for our products and services-->
+<div class="container is-fluid">
+	<div class="notification {{css}}">
+		{{title}}:&nbsp;&nbsp;&nbsp;{{information}}
+	</div>
+
+	<div class="tabs is-boxed">
+		<ul>
+			<li class="is-active"><a>Products</a></li>
+			<li><a>Services</a></li>
+			<li><a>Manage Database</a></li>
+		</ul>
+	</div>
+	<!-- The modal edit form here. Modal is active by default-->
+	<div
+		id="product-detail"
+		class="is-active modal">
+		<div class="modal-background"></div>
+		<div class="modal-card">
+			<section class="modal-card-body">
+				<h2 class="title is-4">Product Name</h2>
+				<p><strong>Code:</strong> Product Code</p>
+				<p><strong>Description:</strong> Product Description</p>
+				<p><strong>Price:</strong> Product Price</p>
+				<p><strong>Inception Date:</strong> Product Inception Date</p>
+			</section>
+			<footer class="modal-card-foot">
+				<input
+					class="button"
+					value="Cancel"
+					onclick="removeIsActiveClassFromElementAndDoHistoryBack('product-detail')" />
+			</footer>
+		</div>
+		<button
+			class="modal-close"
+			aria-label="close"
+			onclick="removeIsActiveClassFromElementAndDoHistoryBack('product-detail')"></button>
+	</div>
+	<script>
+		function removeIsActiveClassFromElementAndDoHistoryBack(elementId) {
+			var element = document.getElementById(elementId);
+			element.classList.remove("is-active");
+			window.history.go(-1);
+			return false;
+		}
+	</script>
+	{% endblock %}
+</div>

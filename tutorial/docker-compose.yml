@@ -1,0 +1,11 @@
+version: '3'
+services:
+ database:
+   container_name: postgres-csc2022
+   image: postgres:latest
+   ports:
+    - "5433:5432"
+   volumes:
+    - /Users/rutholotu/Desktop/Documents/school-stuff/Year-2/Semester-2/csc202
+   env_file:
+    - csc2022.env

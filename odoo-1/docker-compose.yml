@@ -1,0 +1,20 @@
+version: '3’
+services:
+    database:
+        container_name: csc2022-set-odoo-db
+        image: postgres:latest
+        volumes:
+           - /Users/rutholotu/Desktop/Documents/school-stuff/Year-2/Semester-2/csc202/odoo-1db:/data/postgres
+        environment:
+                POSTGRES_USER: odoo
+                POSTGRES_PASSWORD: odoo
+                POSTGRES_DB: postgres
+    odoo:
+        container_name: odoo
+        image: odoo
+        links:
+            - database:db
+        ports:
+            - 8069:8069
+            depends_on:
+            - database
